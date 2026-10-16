@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://caixeiro.tec.br/sitemap.xml
