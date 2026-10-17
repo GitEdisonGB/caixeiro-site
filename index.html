@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Caixeiro — PDV integrado ao TOTVS Protheus</title>
-<meta name="description" content="Caixeiro é um PDV integrado nativamente ao TOTVS Protheus: app Android para venda externa e balcão, e frente de caixa web. Emite NFC-e, NF-e, pedido e orçamento direto no ERP.">
+<title>Caixeiro — PDV móvel e frente de caixa integrados ao Protheus</title>
+<meta name="description" content="Caixeiro é um app Android para o vendedor e uma frente de caixa no navegador, ligados direto ao TOTVS Protheus: catálogo da filial, NFC-e, NF-e, pedido, orçamento, estoque e caixa do dia.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://caixeiro.tec.br/">
 <meta name="theme-color" content="#F2F5F9" media="(prefers-color-scheme: light)">
@@ -14,8 +14,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Caixeiro">
-<meta property="og:title" content="Caixeiro — PDV integrado ao TOTVS Protheus">
-<meta property="og:description" content="App Android e frente de caixa web ligados direto ao Protheus: catálogo da filial, NFC-e, NF-e, pedido, orçamento e caixa do dia.">
+<meta property="og:title" content="Caixeiro — PDV móvel e frente de caixa integrados ao Protheus">
+<meta property="og:description" content="App Android para o vendedor e frente de caixa no navegador. A venda é emitida no próprio Protheus: NFC-e, NF-e, pedido e orçamento, com caixa do dia e mapa de vendas.">
 <meta property="og:url" content="https://caixeiro.tec.br/">
 <meta property="og:image" content="https://caixeiro.tec.br/assets/og-caixeiro.png">
 <meta property="og:image:width" content="1200">
@@ -26,12 +26,14 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="estilo.css">
+<link rel="stylesheet" href="estilo.css?v=2">
+<script>document.documentElement.classList.add('js')</script>
+<script src="site.js?v=2" defer></script>
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
-<header class="topo">
+<header class="topo" id="topo">
   <div class="faixa topo-faixa">
     <a class="marca" href="#inicio" aria-label="Caixeiro, início">
       <picture>
@@ -39,163 +41,228 @@
         <img src="assets/letreiro-azul.svg" alt="Caixeiro" width="150" height="31">
       </picture>
     </a>
-    <nav aria-label="Seções">
-      <ul class="menu">
-        <li><a href="#produto">Produto</a></li>
-        <li><a href="#recursos">Recursos</a></li>
-        <li><a href="#caixa">Caixa do dia</a></li>
-        <li><a href="#para-quem">Para quem</a></li>
+    <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <span class="menu-botao-linhas" aria-hidden="true"></span>
+      <span class="menu-botao-texto">Menu</span>
+    </button>
+    <nav class="navegacao" aria-label="Seções">
+      <ul class="menu" id="menu-principal">
+        <li><a href="#app">App</a></li>
+        <li><a href="#balcao">Balcão</a></li>
+        <li><a href="#caixa">Caixa e relatórios</a></li>
+        <li><a href="#seguranca">Segurança</a></li>
+        <li><a href="#implantacao">Implantação</a></li>
       </ul>
     </nav>
-    <a class="botao botao-pequeno" href="#contato">Fale conosco</a>
+    <a class="botao botao-pequeno topo-cta" href="#contato">Fale conosco</a>
   </div>
 </header>
 
 <main id="conteudo">
 
+  <!-- Abertura -->
   <section class="abertura" id="inicio" aria-labelledby="titulo-principal">
+    <div class="abertura-fundo" aria-hidden="true"></div>
     <div class="faixa abertura-grade">
       <div class="abertura-texto">
-        <p class="sobretitulo">PDV para <span translate="no">TOTVS Protheus</span></p>
-        <h1 id="titulo-principal">A venda nasce no <span translate="no">Caixeiro</span> e cai direto no <span translate="no">Protheus</span>.</h1>
-        <p class="lide">App Android para o vendedor, no celular ou na SmartPOS, e frente de caixa web para o balcão. Catálogo, preços, clientes e documentos fiscais vêm do seu ERP, sem digitar a venda duas vezes.</p>
-        <div class="acoes">
+        <p class="sobretitulo entra" style="--atraso:0ms">PDV para quem usa <span translate="no">TOTVS Protheus</span></p>
+        <h1 id="titulo-principal" class="entra" style="--atraso:80ms">Venda no celular e no balcão. A nota sai do seu <span translate="no">Protheus</span>.</h1>
+        <p class="lide entra" style="--atraso:160ms">O <span translate="no">Caixeiro</span> tem um app Android para o vendedor e uma frente de caixa que roda no navegador. Catálogo, preços, clientes, estoque e documentos fiscais vêm do ERP que você já usa — a venda não é digitada duas vezes.</p>
+        <div class="acoes entra" style="--atraso:240ms">
           <a class="botao" href="#contato">Agendar uma conversa</a>
-          <a class="botao botao-contorno" href="#recursos">Ver recursos</a>
+          <a class="botao botao-contorno" href="#app">Ver o que ele faz</a>
         </div>
-        <ul class="selos" aria-label="Destaques">
-          <li>NFC-e autorizada na hora</li>
-          <li>NF-e, pedido e orçamento</li>
-          <li>Sem integração intermediária</li>
+        <ul class="selos entra" style="--atraso:320ms" aria-label="Destaques">
+          <li>NFC-e, NF-e, pedido e orçamento</li>
+          <li>Caixa do dia com fechamento cego</li>
+          <li>Sem senha do ERP no aparelho</li>
         </ul>
       </div>
-      <figure class="moldura moldura-tela abertura-figura">
-        <img src="assets/balcao-venda-1366.webp"
-             srcset="assets/balcao-venda-800.webp 800w, assets/balcao-venda-1366.webp 1366w"
-             sizes="(min-width: 1100px) 640px, (min-width: 900px) 55vw, calc(100vw - 32px)"
-             width="1366" height="768"
-             alt="Tela Vender do Caixeiro Balcão: lista de produtos com código, unidade e preço à esquerda; à direita o cliente Consumidor final, três produtos no carrinho, total de R$ 11,35 e o botão Finalizar venda."
-             fetchpriority="high">
-        <figcaption>Caixeiro Balcão — catálogo da filial e carrinho na mesma tela, tudo pelo teclado.</figcaption>
-      </figure>
+
+      <div class="abertura-visual entra" style="--atraso:200ms">
+        <figure class="janela">
+          <div class="janela-barra" aria-hidden="true"><i></i><i></i><i></i><span>Caixeiro Balcão</span></div>
+          <img src="assets/balcao-venda-1366.webp"
+               srcset="assets/balcao-venda-800.webp 800w, assets/balcao-venda-1366.webp 1366w"
+               sizes="(min-width: 1100px) 680px, (min-width: 900px) 58vw, calc(100vw - 32px)"
+               width="1366" height="768"
+               alt="Tela Vender do Caixeiro Balcão: lista de produtos com código, unidade e preço à esquerda; à direita o cliente Consumidor final, três produtos no carrinho, total de R$ 11,35 e o botão Finalizar venda (F4)."
+               fetchpriority="high">
+        </figure>
+        <figure class="celular abertura-celular">
+          <img src="assets/app-vender-360.webp"
+               srcset="assets/app-vender-360.webp 360w, assets/app-vender-600.webp 600w"
+               sizes="180px"
+               width="600" height="1248"
+               alt="App Caixeiro PDV, tela Vender: pesquisa de produto, lista com preços e botões de quantidade e a barra azul com 3 produtos e R$ 11,35.">
+        </figure>
+      </div>
     </div>
   </section>
 
-  <section class="secao" id="produto" aria-labelledby="titulo-produto">
+  <!-- Como os dados andam -->
+  <section class="fluxo" aria-labelledby="titulo-fluxo">
     <div class="faixa">
-      <header class="secao-cabeca">
-        <p class="sobretitulo">Duas frentes, um só ERP</p>
-        <h2 id="titulo-produto">O vendedor na rua e o caixa no balcão, vendo os mesmos dados.</h2>
+      <h2 id="titulo-fluxo" class="visualmente-oculto">Como o Caixeiro se liga ao Protheus</h2>
+      <ol class="fluxo-linha" data-revelar>
+        <li class="fluxo-no">
+          <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
+          <div><strong>Caixeiro PDV</strong><span>App Android do vendedor</span></div>
+        </li>
+        <li class="fluxo-no">
+          <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 20.5h8M12 17v3.5"/></svg>
+          <div><strong>Caixeiro Balcão</strong><span>Frente de caixa no navegador</span></div>
+        </li>
+        <li class="fluxo-no fluxo-meio">
+          <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8 4.5 5.8v5.4c0 4.6 3.2 8.4 7.5 10 4.3-1.6 7.5-5.4 7.5-10V5.8z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></svg>
+          <div><strong>Gateway em nuvem</strong><span>HTTPS, um endereço por produto</span></div>
+        </li>
+        <li class="fluxo-no fluxo-fim">
+          <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v6.5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V5.5M4.5 12v6.5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V12"/></svg>
+          <div><strong translate="no">Protheus</strong><span>Preços, estoque, clientes e notas</span></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Para quem -->
+  <section class="secao" id="para-quem" aria-labelledby="titulo-para-quem">
+    <div class="faixa">
+      <header class="secao-cabeca" data-revelar>
+        <p class="sobretitulo">Para quem é</p>
+        <h2 id="titulo-para-quem">Empresas que já vivem no <span translate="no">Protheus</span> e vendem em mais de um lugar.</h2>
+        <p class="secao-lide">O <span translate="no">Caixeiro</span> não substitui o ERP nem guarda uma cópia paralela das vendas. Ele é a tela de venda; o cadastro, o fiscal e o financeiro continuam no <span translate="no">Protheus</span>.</p>
       </header>
-
-      <div class="produto-grade">
-        <article class="produto">
-          <div class="produto-texto">
-            <h3>
-              <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
-              Caixeiro PDV — app Android
-            </h3>
-            <p>Para venda externa e de balcão, no celular do vendedor ou na maquininha SmartPOS. O vendedor escolhe o cliente, monta o carrinho com o catálogo e os preços da filial e finaliza em NFC-e, NF-e, pedido ou orçamento.</p>
-            <ul class="lista-marcada">
-              <li>Busca por código ou nome, com o catálogo guardado no aparelho</li>
-              <li>Histórico de compras do cliente antes de vender</li>
-              <li>Desconto com limite definido por dispositivo</li>
-              <li>Cupom por e-mail ou compartilhado pelo celular</li>
-            </ul>
-          </div>
-          <div class="telefones">
-            <figure class="moldura moldura-celular">
-              <img src="assets/app-vender-600.webp"
-                   srcset="assets/app-vender-360.webp 360w, assets/app-vender-600.webp 600w"
-                   sizes="(min-width: 900px) 240px, 42vw"
-                   width="600" height="1248" loading="lazy"
-                   alt="App Caixeiro, tela Vender: cliente Consumidor final, pesquisa de produto e lista com preços e botões de quantidade; barra azul com 3 produtos e R$ 11,35.">
-              <figcaption>Vender</figcaption>
-            </figure>
-            <figure class="moldura moldura-celular">
-              <img src="assets/app-finalizar-600.webp"
-                   srcset="assets/app-finalizar-360.webp 360w, assets/app-finalizar-600.webp 600w"
-                   sizes="(min-width: 900px) 240px, 42vw"
-                   width="600" height="1248" loading="lazy"
-                   alt="App Caixeiro, tela Finalizar venda: total de R$ 11,35, escolha do documento entre NFC-e, NF-e, Pedido e Orçamento, e forma de pagamento entre Dinheiro, PIX, Crédito e Débito.">
-              <figcaption>Finalizar</figcaption>
-            </figure>
-          </div>
+      <div class="cartoes tres" data-revelar-grupo>
+        <article class="cartao">
+          <h3>Hortifrúti e granel</h3>
+          <p>Produto vendido por quilo ou litro, com quantidade fracionada no app e no caixa, e preço da tabela da filial sempre atualizado.</p>
         </article>
-
-        <article class="produto produto-balcao">
-          <div class="produto-texto">
-            <h3>
-              <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 20.5h8M12 17v3.5"/></svg>
-              Caixeiro Balcão — frente de caixa web
-            </h3>
-            <p>Roda no navegador do caixa, sem instalação. Feito para o ritmo do balcão: atalhos de teclado em todas as telas, quantidade digitada direto na busca e o botão de emitir sempre à vista.</p>
-            <p>É a tela que aparece no início desta página.</p>
-          </div>
-          <div class="produto-texto">
-            <ul class="lista-marcada lista-balcao">
-              <li>Finaliza o orçamento feito pelo vendedor no app</li>
-              <li>Emite NFC-e e imprime o cupom</li>
-              <li>Abre, movimenta e fecha o caixa do dia</li>
-              <li>Vendas e relatórios do dia na mesma tela</li>
-            </ul>
-          </div>
+        <article class="cartao">
+          <h3>Atacarejo e distribuidor</h3>
+          <p>Vendedor atendendo no salão ou em campo com o histórico do cliente na mão, gerando orçamento ou pedido que o caixa finaliza.</p>
+        </article>
+        <article class="cartao">
+          <h3>Varejo com balcão</h3>
+          <p>Caixa operado pelo teclado, NFC-e emitida na hora, cupom na impressora térmica e o caixa do dia conferido no fim do expediente.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="secao secao-papel" id="recursos" aria-labelledby="titulo-recursos">
-    <div class="faixa">
-      <header class="secao-cabeca">
-        <p class="sobretitulo">Recursos</p>
-        <h2 id="titulo-recursos">O que já está em produção.</h2>
-      </header>
+  <!-- App -->
+  <section class="secao secao-papel" id="app" aria-labelledby="titulo-app">
+    <div class="faixa app-grade">
+      <div class="app-texto">
+        <header class="secao-cabeca secao-cabeca-esquerda" data-revelar>
+          <p class="sobretitulo">Caixeiro PDV · app Android</p>
+          <h2 id="titulo-app">O pedido completo no celular do vendedor.</h2>
+          <p class="secao-lide">Escolhe o cliente, monta o carrinho com o catálogo da filial e finaliza no documento certo, sem voltar ao computador.</p>
+        </header>
+        <ul class="recursos" data-revelar-grupo>
+          <li>
+            <h3><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/></svg>Catálogo da tabela de preço</h3>
+            <p>Busca por código ou nome, com o catálogo guardado no aparelho e sincronizado com o <span translate="no">Protheus</span>.</p>
+          </li>
+          <li>
+            <h3><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20.5h14l-1.6-10h-10.8z"/><path d="M9 10.5a3 3 0 0 1 6 0"/></svg>Quantidade em KG e L</h3>
+            <p>Quantidade fracionada para produtos vendidos a peso ou volume; inteira para os demais.</p>
+          </li>
+          <li>
+            <h3><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>Desconto com limite</h3>
+            <p>Desconto por item e no pedido, até o percentual máximo definido para cada aparelho.</p>
+          </li>
+          <li>
+            <h3><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20.5c.8-3.8 3.7-6 7.5-6s6.7 2.2 7.5 6"/></svg>Cliente e histórico</h3>
+            <p>Consumidor final ou cliente cadastrado, cadastro rápido de cliente novo, últimas compras e “copiar última compra”.</p>
+          </li>
+          <li>
+            <h3><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 2.5h8l4 4v15h-12z"/><path d="M14.5 2.5v4h4M9.5 12h6M9.5 16h6"/></svg>NFC-e, NF-e, pedido ou orçamento</h3>
+            <p>O documento é gerado no próprio <span translate="no">Protheus</span>; o cupom vai por e-mail ou é compartilhado em PDF.</p>
+          </li>
+          <li>
+            <h3><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8 12 3.5 20.5 8v8L12 20.5 3.5 16z"/><path d="M3.5 8 12 12.5 20.5 8M12 12.5v8"/></svg>Saldo de estoque</h3>
+            <p>Saldo do armazém configurado na lista e no item, com bloqueio opcional de venda sem estoque.</p>
+          </li>
+        </ul>
+        <p class="nota-rodape" data-revelar>Também: vendas do dia, orçamentos em aberto e tema claro, escuro ou automático. A logo da sua empresa aparece nas telas e no comprovante.</p>
+      </div>
 
-      <div class="recursos">
-        <section class="recurso" aria-labelledby="r1">
-          <h3 id="r1"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17M3.5 12h17M3.5 17.5h11"/></svg>Catálogo e preços da filial</h3>
-          <p>Produtos, unidades e tabela de preço vêm do Protheus, por filial. O app atualiza o catálogo sozinho em segundo plano.</p>
-        </section>
-        <section class="recurso" aria-labelledby="r2">
-          <h3 id="r2"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>Histórico do cliente</h3>
-          <p>As últimas compras aparecem ao escolher o cliente, para repetir o pedido e conversar sobre o que ele costuma levar.</p>
-        </section>
-        <section class="recurso" aria-labelledby="r3">
-          <h3 id="r3"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>Desconto com limite</h3>
-          <p>Cada dispositivo tem o seu percentual máximo de desconto. Acima dele, a venda não sai.</p>
-        </section>
-        <section class="recurso" aria-labelledby="r4">
-          <h3 id="r4"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 2.5h8l4 4v15h-12z"/><path d="M14.5 2.5v4h4M9.5 12h6M9.5 16h6"/></svg>NFC-e, NF-e, pedido e orçamento</h3>
-          <p>O documento é gerado pelo próprio Protheus, com as regras fiscais que você já mantém. O Caixeiro não guarda certificado nem emite nada por fora.</p>
-        </section>
-        <section class="recurso" aria-labelledby="r5">
-          <h3 id="r5"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h11M11 3.5l4 4-4 4M20 16.5H9M13 12.5l-4 4 4 4"/></svg>Do vendedor ao caixa</h3>
-          <p>O vendedor grava o orçamento no app e o caixa finaliza no Balcão, mantendo o vendedor da venda para a comissão.</p>
-        </section>
-        <section class="recurso" aria-labelledby="r6">
-          <h3 id="r6"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z" class="preenchido"/></svg>Sua marca, tema claro ou escuro</h3>
-          <p>Cada empresa usa a própria logo nas telas e no comprovante. O usuário escolhe tema claro, escuro ou automático.</p>
-        </section>
+      <div class="app-telas" data-revelar>
+        <figure class="celular">
+          <img src="assets/app-vender-600.webp"
+               srcset="assets/app-vender-360.webp 360w, assets/app-vender-600.webp 600w"
+               sizes="(min-width: 900px) 230px, 42vw"
+               width="600" height="1248" loading="lazy"
+               alt="App Caixeiro, tela Vender: cliente Consumidor final, pesquisa de produto e lista com preços e botões de quantidade; barra azul com 3 produtos e R$ 11,35.">
+          <figcaption>Vender</figcaption>
+        </figure>
+        <figure class="celular celular-desce">
+          <img src="assets/app-finalizar-600.webp"
+               srcset="assets/app-finalizar-360.webp 360w, assets/app-finalizar-600.webp 600w"
+               sizes="(min-width: 900px) 230px, 42vw"
+               width="600" height="1248" loading="lazy"
+               alt="App Caixeiro, tela Finalizar venda: total de R$ 11,35, escolha do documento entre NFC-e, NF-e, Pedido e Orçamento, e forma de pagamento entre Dinheiro, PIX, Crédito e Débito.">
+          <figcaption>Finalizar</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <section class="secao" id="caixa" aria-labelledby="titulo-caixa">
+  <!-- Balcão -->
+  <section class="secao" id="balcao" aria-labelledby="titulo-balcao">
+    <div class="faixa">
+      <header class="secao-cabeca" data-revelar>
+        <p class="sobretitulo">Caixeiro Balcão · frente de caixa web</p>
+        <h2 id="titulo-balcao">Um caixa que abre no navegador e anda pelo teclado.</h2>
+        <p class="secao-lide">Nada para instalar no computador do caixa. Cada tela tem a sua tecla, a quantidade vai direto na busca e o total fica sempre à vista.</p>
+      </header>
+
+      <div class="teclas" data-revelar-grupo aria-label="Atalhos de teclado do Balcão">
+        <div class="tecla"><kbd>F2</kbd><span>Cliente</span></div>
+        <div class="tecla"><kbd>F3</kbd><span>Vender</span></div>
+        <div class="tecla"><kbd>F4</kbd><span>Finalizar</span></div>
+        <div class="tecla"><kbd>F6</kbd><span>Orçamentos</span></div>
+        <div class="tecla"><kbd>F7</kbd><span>Caixa</span></div>
+        <div class="tecla"><kbd>F8</kbd><span>Relatórios</span></div>
+        <div class="tecla"><kbd>F9</kbd><span>Vendas</span></div>
+        <div class="tecla"><kbd>F10</kbd><span>Impressora</span></div>
+      </div>
+
+      <div class="cartoes tres balcao-cartoes" data-revelar-grupo>
+        <article class="cartao">
+          <h3><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h11M11 3.5l4 4-4 4M20 16.5H9M13 12.5l-4 4 4 4"/></svg>Orçamento do vendedor, finalizado no caixa</h3>
+          <p>O vendedor grava o orçamento no app; o caixa abre a lista de orçamentos em aberto, confere e emite. O vendedor da venda é mantido.</p>
+        </article>
+        <article class="cartao">
+          <h3><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9V3.5h11V9"/><rect x="3.5" y="9" width="17" height="8" rx="2"/><path d="M6.5 14.5h11v6h-11z"/></svg>Impressora térmica sem instalar nada</h3>
+          <p>O cupom é enviado em ESC/POS direto do Chrome para a impressora (USB ou serial), com segunda via a partir da lista de vendas.</p>
+        </article>
+        <article class="cartao">
+          <h3><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 4.5h13v15h-13z"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4"/></svg>Vendas e cancelamento</h3>
+          <p>Vendas do dia com vendedor, forma de pagamento e documento; cancelamento de NFC-e pela própria lista, dentro das regras do <span translate="no">Protheus</span>.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Caixa e relatórios -->
+  <section class="secao secao-papel" id="caixa" aria-labelledby="titulo-caixa">
     <div class="faixa caixa-grade">
       <div>
-        <header class="secao-cabeca secao-cabeca-esquerda">
-          <p class="sobretitulo">Caixa do dia</p>
-          <h2 id="titulo-caixa">Do troco da manhã ao mapa de vendas no e-mail do financeiro.</h2>
+        <header class="secao-cabeca secao-cabeca-esquerda" data-revelar>
+          <p class="sobretitulo">Caixa do dia e relatórios</p>
+          <h2 id="titulo-caixa">Do troco da manhã ao mapa de vendas no <span class="sem-quebra">e-mail</span> do financeiro.</h2>
         </header>
-        <ol class="passos">
-          <li><strong>Abertura com troco.</strong> O caixa informa o dinheiro inicial da gaveta.</li>
-          <li><strong>Sangria e suprimento.</strong> Cada retirada ou reforço gera um recibo para assinar.</li>
-          <li><strong>Fechamento cego.</strong> O operador conta a gaveta e os comprovantes por forma de pagamento; o esperado e a diferença só aparecem depois de enviar.</li>
-          <li><strong>Mapa de vendas.</strong> O resumo do dia segue em PDF por e-mail para o financeiro.</li>
+        <ol class="passos" data-revelar-grupo>
+          <li><strong>Abertura com troco.</strong> O caixa informa o dinheiro inicial da gaveta. Com o caixa fechado, o Balcão não emite <span class="sem-quebra">NFC-e</span> nem <span class="sem-quebra">NF-e</span>.</li>
+          <li><strong>Sangria e suprimento.</strong> Cada retirada ou reforço fica registrado e gera um recibo para assinar.</li>
+          <li><strong>Fechamento cego.</strong> O operador informa o que contou por forma de pagamento; o esperado e a diferença só aparecem depois de enviar.</li>
+          <li><strong>Mapa de vendas.</strong> O resumo do dia segue em PDF por e-mail para o financeiro. No Balcão, o mapa também sai por período, para conferência.</li>
         </ol>
       </div>
-      <figure class="moldura moldura-tela">
+      <figure class="janela" data-revelar>
+        <div class="janela-barra" aria-hidden="true"><i></i><i></i><i></i><span>Fechar caixa</span></div>
         <img src="assets/balcao-fechamento-1128.webp"
              srcset="assets/balcao-fechamento-700.webp 700w, assets/balcao-fechamento-1128.webp 1128w"
              sizes="(min-width: 1100px) 600px, (min-width: 900px) 50vw, calc(100vw - 32px)"
@@ -206,34 +273,93 @@
     </div>
   </section>
 
-  <section class="secao secao-papel" id="para-quem" aria-labelledby="titulo-para-quem">
-    <div class="faixa duas-colunas">
-      <div>
-        <header class="secao-cabeca secao-cabeca-esquerda">
-          <p class="sobretitulo">Para quem</p>
-          <h2 id="titulo-para-quem">Empresas que já vivem no TOTVS Protheus.</h2>
-        </header>
-        <p>Distribuidores, atacarejos e varejo que vendem em campo e no balcão e querem que a venda caia no ERP sem planilha, sem redigitação e sem um sistema paralelo para conciliar.</p>
-        <p>O Caixeiro é instalado no Protheus de cada empresa e conversa com ele por REST. Os dados ficam no seu ambiente.</p>
-      </div>
-      <aside class="em-breve" aria-labelledby="titulo-em-breve">
-        <p class="etiqueta">Em desenvolvimento</p>
+  <!-- Segurança -->
+  <section class="secao secao-escura" id="seguranca" aria-labelledby="titulo-seguranca">
+    <div class="faixa">
+      <header class="secao-cabeca" data-revelar>
+        <p class="sobretitulo">Segurança e infraestrutura</p>
+        <h2 id="titulo-seguranca">O aparelho do vendedor não carrega a chave do seu ERP.</h2>
+        <p class="secao-lide">App e Balcão falam com um gateway em nuvem (Cloudflare). É ele que conversa com o <span translate="no">Protheus</span>, e só com a API do <span translate="no">Caixeiro</span>.</p>
+      </header>
+      <ul class="seguranca" data-revelar-grupo>
+        <li>
+          <h3>Credencial fora do aparelho</h3>
+          <p>O acesso ao REST do <span translate="no">Protheus</span> fica no gateway. Nem o app nem o navegador do caixa recebem essa senha.</p>
+        </li>
+        <li>
+          <h3>Um endereço por produto</h3>
+          <p>O app e o Balcão têm endereços próprios, e cada acesso só vale no endereço do seu perfil: vendedor ou caixa.</p>
+        </li>
+        <li>
+          <h3>Limite de tentativas no login</h3>
+          <p>Tentativas repetidas de acesso com código inválido são bloqueadas por um tempo.</p>
+        </li>
+        <li>
+          <h3>Venda sem duplicidade</h3>
+          <p>Se a conexão cair no meio do envio, reenviar a mesma venda devolve o resultado já gravado, sem emitir a nota de novo.</p>
+        </li>
+        <li>
+          <h3>Fiscal no ERP</h3>
+          <p>Certificado digital, regras fiscais e numeração ficam no <span translate="no">Protheus</span>. O <span translate="no">Caixeiro</span> não emite nada por fora.</p>
+        </li>
+        <li>
+          <h3>Acesso por dispositivo</h3>
+          <p>Cada vendedor ou caixa tem o seu código de acesso, com estação, série, caixa, armazém e limite de desconto definidos no ERP.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Implantação -->
+  <section class="secao" id="implantacao" aria-labelledby="titulo-implantacao">
+    <div class="faixa">
+      <header class="secao-cabeca" data-revelar>
+        <p class="sobretitulo">Implantação</p>
+        <h2 id="titulo-implantacao">Como o Caixeiro entra na sua operação.</h2>
+      </header>
+      <ol class="etapas" data-revelar-grupo>
+        <li>
+          <span class="etapa-num" aria-hidden="true">1</span>
+          <h3>Conversa sobre a venda de hoje</h3>
+          <p>Quantos vendedores e caixas, quais documentos emite, como o financeiro confere o dia.</p>
+        </li>
+        <li>
+          <span class="etapa-num" aria-hidden="true">2</span>
+          <h3>Instalação no <span translate="no">Protheus</span></h3>
+          <p>Os fontes e a API do <span translate="no">Caixeiro</span> são compilados no seu ambiente, com as tabelas de apoio.</p>
+        </li>
+        <li>
+          <span class="etapa-num" aria-hidden="true">3</span>
+          <h3>Cadastro dos dispositivos</h3>
+          <p>Cada aparelho ou caixa recebe o seu acesso, com estação, série, caixa, armazém e desconto máximo.</p>
+        </li>
+        <li>
+          <span class="etapa-num" aria-hidden="true">4</span>
+          <h3>App, Balcão e acompanhamento</h3>
+          <p>O app é instalado nos aparelhos, o Balcão abre no navegador do caixa e a virada é acompanhada de perto.</p>
+        </li>
+      </ol>
+
+      <aside class="em-breve" data-revelar aria-labelledby="titulo-em-breve">
+        <p class="etiqueta">Em desenvolvimento — ainda não disponível</p>
         <h3 id="titulo-em-breve">Pagamento integrado na maquininha</h3>
-        <p>Cobrança de cartão (Stone) e PIX no mesmo aparelho em que a venda é montada, fechando venda, pagamento e nota fiscal num único passo.</p>
-        <p class="nota">Hoje a forma de pagamento é registrada na venda e cobrada na maquininha que a empresa já usa.</p>
+        <p>Cobrar cartão e PIX no mesmo aparelho em que a venda é montada. Hoje a forma de pagamento é registrada na venda e cobrada na maquininha que a empresa já usa.</p>
       </aside>
     </div>
   </section>
 
+  <!-- Contato -->
   <section class="secao contato" id="contato" aria-labelledby="titulo-contato">
-    <div class="faixa contato-caixa">
-      <div>
-        <h2 id="titulo-contato">Quer ver o Caixeiro com os dados da sua empresa?</h2>
-        <p>Conte como é a sua venda hoje: quantos vendedores, quantos caixas e quais documentos emite. A gente mostra como fica no Caixeiro.</p>
-      </div>
-      <div class="contato-acao">
-        <a class="botao botao-invertido" href="mailto:contato@caixeiro.tec.br?subject=Quero%20conhecer%20o%20Caixeiro">Escrever para o Caixeiro</a>
-        <p class="contato-email" translate="no">contato@caixeiro.tec.br</p>
+    <div class="faixa">
+      <div class="contato-caixa" data-revelar>
+        <div>
+          <h2 id="titulo-contato">Quer ver o Caixeiro com os dados da sua empresa?</h2>
+          <p>Conte como é a sua venda hoje: quantos vendedores, quantos caixas e quais documentos emite. A gente mostra como fica no <span translate="no">Caixeiro</span>.</p>
+        </div>
+        <div class="contato-acao">
+          <a class="botao botao-claro" href="mailto:contato@caixeiro.tec.br?subject=Quero%20conhecer%20o%20Caixeiro">Escrever para o Caixeiro</a>
+          <p class="contato-email" translate="no">contato@caixeiro.tec.br</p>
+        </div>
       </div>
     </div>
   </section>
@@ -247,7 +373,7 @@
       <span translate="no">Caixeiro · caixeiro.tec.br</span>
     </p>
     <p>Desenvolvido por E. Barbieri Consultoria · CNPJ 38.153.073/0001-96</p>
-    <p class="rodape-nota">TOTVS e Protheus são marcas da TOTVS S.A. O Caixeiro é um produto independente.</p>
+    <p class="rodape-nota">TOTVS e Protheus são marcas da TOTVS S.A. O Caixeiro é um produto independente, sem vínculo com a TOTVS.</p>
   </div>
 </footer>
 </body>
