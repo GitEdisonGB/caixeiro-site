@@ -409,6 +409,7 @@ a:hover { color: var(--primaria-forte); }
 /* Cartões */
 .cartoes { display: grid; gap: 20px; }
 .cartoes.tres { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cartoes.dois { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .cartao {
   position: relative;
   padding: 26px 26px 28px;
@@ -461,7 +462,7 @@ a:hover { color: var(--primaria-forte); }
 /* Balcão */
 .teclas {
   display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-columns: repeat(9, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 28px;
 }
@@ -707,7 +708,7 @@ a:hover { color: var(--primaria-forte); }
 
 /* ---------- Responsivo ---------- */
 @media (max-width: 1080px) {
-  .teclas { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .teclas { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .etapas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
 }
 
@@ -729,7 +730,7 @@ a:hover { color: var(--primaria-forte); }
   .topo-cta { display: none; }
   .abertura-grade, .caixa-grade, .app-grade { grid-template-columns: minmax(0, 1fr); }
   .abertura-visual { margin-right: 12px; }
-  .cartoes.tres, .seguranca { grid-template-columns: minmax(0, 1fr); }
+  .cartoes.tres, .cartoes.dois, .seguranca { grid-template-columns: minmax(0, 1fr); }
   .fluxo-linha { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .fluxo-no:nth-child(3) { border-left: 0; }
   .fluxo-no:nth-child(n + 3) { border-top: 1px solid var(--borda); }
@@ -752,7 +753,7 @@ a:hover { color: var(--primaria-forte); }
   .app-telas { gap: 12px; }
   .app-telas .celular { width: auto; flex: 1 1 0; min-width: 0; }
   .celular-desce { margin-top: 32px; }
-  .teclas { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  .teclas { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
   .tecla { padding: 10px 4px; }
   .tecla kbd { min-width: 38px; height: 32px; font-size: .8125rem; }
   .tecla span { font-size: .75rem; }
